@@ -1,0 +1,12 @@
+[gd_scene format=2]
+
+[node name="SelectedBar" type="ColorRect"]
+margin_right = 5.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 5, 80 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+color = Color( 1, 0.917647, 0.376471, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

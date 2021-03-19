@@ -1,0 +1,223 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scn/top_bar/top_bar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scn/main/main.gd" type="Script" id=2]
+[ext_resource path="res://scn/side_bar/side_bar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scn/main/logs/logs.gd" type="Script" id=4]
+[ext_resource path="res://addons/easy_charts/LineChart/LineChart.tscn" type="PackedScene" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+content_margin_left = 15.0
+content_margin_right = 15.0
+content_margin_top = 15.0
+content_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxEmpty" id=2]
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxEmpty" id=3]
+content_margin_left = 15.0
+content_margin_right = 15.0
+content_margin_top = 15.0
+content_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxEmpty" id=4]
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxEmpty" id=5]
+content_margin_left = 15.0
+content_margin_right = 15.0
+content_margin_top = 15.0
+content_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxEmpty" id=6]
+content_margin_bottom = 10.0
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0862745, 0.0862745, 0.113725, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopBar" parent="MainContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+margin_right = 1280.0
+margin_bottom = 30.0
+
+[node name="DockContainer" type="HBoxContainer" parent="MainContainer"]
+margin_top = 30.0
+margin_right = 1280.0
+margin_bottom = 720.0
+size_flags_vertical = 3
+custom_constants/separation = 0
+
+[node name="SideBar" parent="MainContainer/DockContainer" instance=ExtResource( 3 )]
+anchor_bottom = 0.0
+margin_right = 96.0
+margin_bottom = 690.0
+
+[node name="Docks" type="VBoxContainer" parent="MainContainer/DockContainer"]
+margin_left = 96.0
+margin_right = 1280.0
+margin_bottom = 690.0
+size_flags_horizontal = 3
+
+[node name="Dashboard" type="PanelContainer" parent="MainContainer/DockContainer/Docks"]
+margin_right = 1184.0
+margin_bottom = 358.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DockContainer" type="VBoxContainer" parent="MainContainer/DockContainer/Docks/Dashboard"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 1169.0
+margin_bottom = 343.0
+
+[node name="Name" type="Label" parent="MainContainer/DockContainer/Docks/Dashboard/DockContainer"]
+margin_right = 1154.0
+margin_bottom = 24.0
+custom_styles/normal = SubResource( 2 )
+text = "Dashboard"
+
+[node name="Row0" type="HBoxContainer" parent="MainContainer/DockContainer/Docks/Dashboard/DockContainer"]
+margin_top = 28.0
+margin_right = 1154.0
+margin_bottom = 328.0
+custom_constants/separation = 30
+alignment = 1
+
+[node name="LineChart" parent="MainContainer/DockContainer/Docks/Dashboard/DockContainer/Row0" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1154.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 450, 300 )
+size_flags_horizontal = 3
+Chart_Style/function_colors = PoolColorArray( 0.968627, 0.666667, 0.160784, 1, 0.956863, 0.223529, 0.290196, 1, 0.352941, 0.419608, 0.482353, 1, 0.560784, 0.74902, 0.34902, 1, 0.313726, 0.270588, 0.219608, 1, 0.717647, 0.662745, 0.603922, 1, 0, 0.843137, 0.584314, 1, 1, 0.92549, 0.8, 1, 1, 0.537255, 0.505882, 1 )
+Chart_Style/box_color = Color( 0, 0, 0, 0 )
+Chart_Style/v_lines_color = Color( 0, 0, 0, 0 )
+Chart_Style/h_lines_color = Color( 1, 1, 1, 0.235294 )
+Chart_Style/font_color = Color( 1, 1, 1, 0.235294 )
+Chart_Style/template = 1
+
+[node name="LineChart2" parent="MainContainer/DockContainer/Docks/Dashboard/DockContainer/Row0" instance=ExtResource( 5 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 592.0
+margin_right = 1154.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 450, 300 )
+size_flags_horizontal = 3
+Chart_Style/function_colors = PoolColorArray( 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1 )
+
+[node name="Database" type="PanelContainer" parent="MainContainer/DockContainer/Docks"]
+margin_top = 362.0
+margin_right = 1184.0
+margin_bottom = 468.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DockContainer" type="VBoxContainer" parent="MainContainer/DockContainer/Docks/Database"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 1169.0
+margin_bottom = 91.0
+
+[node name="Name" type="Label" parent="MainContainer/DockContainer/Docks/Database/DockContainer"]
+margin_right = 1154.0
+margin_bottom = 24.0
+custom_styles/normal = SubResource( 4 )
+text = "Database"
+
+[node name="SensorsContainer" type="VBoxContainer" parent="MainContainer/DockContainer/Docks/Database/DockContainer"]
+margin_top = 28.0
+margin_right = 1154.0
+margin_bottom = 28.0
+
+[node name="Logs" type="PanelContainer" parent="MainContainer/DockContainer/Docks"]
+margin_top = 472.0
+margin_right = 1184.0
+margin_bottom = 579.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DockContainer" type="VBoxContainer" parent="MainContainer/DockContainer/Docks/Logs"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 1169.0
+margin_bottom = 92.0
+
+[node name="Name" type="Label" parent="MainContainer/DockContainer/Docks/Logs/DockContainer"]
+margin_right = 1154.0
+margin_bottom = 24.0
+custom_styles/normal = SubResource( 4 )
+text = "Logs"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainContainer/DockContainer/Docks/Logs/DockContainer"]
+margin_top = 28.0
+margin_right = 1154.0
+margin_bottom = 77.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Settings" type="PanelContainer" parent="MainContainer/DockContainer/Docks"]
+margin_top = 583.0
+margin_right = 1184.0
+margin_bottom = 690.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DockContainer" type="VBoxContainer" parent="MainContainer/DockContainer/Docks/Settings"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 1169.0
+margin_bottom = 92.0
+
+[node name="Name" type="Label" parent="MainContainer/DockContainer/Docks/Settings/DockContainer"]
+margin_right = 1154.0
+margin_bottom = 24.0
+custom_styles/normal = SubResource( 6 )
+text = "Dock"
+[connection signal="close" from="MainContainer/TopBar" to="." method="_on_TopBar_close"]
+[connection signal="minimize" from="MainContainer/TopBar" to="." method="_on_TopBar_minimize"]
+[connection signal="moving_from_pos" from="MainContainer/TopBar" to="." method="_on_TopBar_moving_from_pos"]
+[connection signal="resize" from="MainContainer/TopBar" to="." method="_on_TopBar_resize"]
+[connection signal="button_pressed" from="MainContainer/DockContainer/SideBar" to="." method="_on_SideBar_button_pressed"]

@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scn/btn/button.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scn/side_bar/side_bar.gd" type="Script" id=2]
+[ext_resource path="res://res/img/sidebar_icon/settings.png" type="Texture" id=3]
+[ext_resource path="res://res/img/sidebar_icon/database.png" type="Texture" id=4]
+[ext_resource path="res://res/img/sidebar_icon/circular-shape-divided-in-three-areas.png" type="Texture" id=5]
+[ext_resource path="res://scn/btn/selected_bar.tscn" type="PackedScene" id=6]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.12549, 0.12549, 0.180392, 1 )
+
+[node name="SideBar" type="PanelContainer"]
+anchor_bottom = 1.0
+margin_right = 100.0
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonContainer" type="VBoxContainer" parent="."]
+margin_right = 100.0
+margin_bottom = 720.0
+size_flags_vertical = 3
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dashboard" parent="ButtonContainer" instance=ExtResource( 1 )]
+margin_right = 96.0
+hint_tooltip = "Dashboard"
+color = Color( 0.12549, 0.12549, 0.180392, 1 )
+button_texture = ExtResource( 5 )
+button_name = "Dashboard"
+
+[node name="Database" parent="ButtonContainer" instance=ExtResource( 1 )]
+margin_top = 80.0
+margin_right = 96.0
+margin_bottom = 160.0
+hint_tooltip = "Database"
+color = Color( 0.12549, 0.12549, 0.180392, 1 )
+button_texture = ExtResource( 4 )
+button_name = "Database"
+
+[node name="Logs" parent="ButtonContainer" instance=ExtResource( 1 )]
+margin_top = 160.0
+margin_right = 96.0
+margin_bottom = 240.0
+hint_tooltip = "Logs"
+color = Color( 0.12549, 0.12549, 0.180392, 1 )
+button_texture = ExtResource( 4 )
+button_name = "Logs"
+
+[node name="Settings" parent="ButtonContainer" instance=ExtResource( 1 )]
+margin_top = 640.0
+margin_right = 96.0
+margin_bottom = 720.0
+hint_tooltip = "Settings"
+size_flags_vertical = 10
+color = Color( 0.12549, 0.12549, 0.180392, 1 )
+button_texture = ExtResource( 3 )
+button_name = "Settings"
+
+[node name="SelectedBar" parent="." instance=ExtResource( 6 )]
+
+[node name="Tween" type="Tween" parent="."]
