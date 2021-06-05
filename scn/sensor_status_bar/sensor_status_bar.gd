@@ -5,6 +5,8 @@ onready var topic_lbl : Label = $Topic
 onready var name_lbl : Label = $Name
 onready var value_lbl : Label = $Status/Value
 onready var status : HBoxContainer = $Status
+onready var battery_percentage : Label = $Battery/Percentage
+onready var battery_progress : TextureProgress = $Battery/Progress
 
 var status_colors : Dictionary = {
     "offline":Color("#767676"),
@@ -26,7 +28,7 @@ func set_status(status_code : int):
             value = "Online"
             color = status_colors.online
         -1:
-            value = "Offline"
+            value = "Sleeping"
             color = status_colors.offline
         _:
             value = "Disconnected"
@@ -34,15 +36,21 @@ func set_status(status_code : int):
     value_lbl.set_text(value)
     status.set_modulate(color)
 
-func setup_sensor(n : String, t : String, s : int = -1):
+func setup(n : String, t : String, s : int = -1):
     set_name(n)
     name_lbl.set_text(n)
     set_topic(t)
     set_status(s)
+    set_battery(2.9)
 
 func set_topic(t : String):
     topic = t
     topic_lbl.set_text(topic)
+
+func set_battery(volt : float) -> void:
+    var perc : float = UTILS.get_percentage(volt)
+    battery_percentage.set_text(str(perc) + "%")
+    battery_progress.set_value(perc)
 
 var i : float = 0
 

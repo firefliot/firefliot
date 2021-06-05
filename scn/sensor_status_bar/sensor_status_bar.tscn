@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scn/sensor_status_bar/sensor_status_bar.gd" type="Script" id=1]
 [ext_resource path="res://res/img/sensor/status.png" type="Texture" id=2]
+[ext_resource path="res://res/img/sensor/battery.svg" type="Texture" id=3]
+[ext_resource path="res://res/img/sensor/battery_perc.svg" type="Texture" id=4]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -42,10 +44,37 @@ size_flags_vertical = 7
 text = "sensor name"
 valign = 1
 
+[node name="Battery" type="VBoxContainer" parent="."]
+margin_left = 278.0
+margin_right = 328.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 50, 0 )
+custom_constants/separation = 0
+alignment = 1
+
+[node name="Progress" type="TextureProgress" parent="Battery"]
+margin_left = 12.0
+margin_top = 340.0
+margin_right = 37.0
+margin_bottom = 365.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+
+[node name="Percentage" type="Label" parent="Battery"]
+margin_top = 365.0
+margin_right = 50.0
+margin_bottom = 379.0
+text = "100%"
+align = 1
+valign = 1
+
 [node name="Status" type="HBoxContainer" parent="."]
 modulate = Color( 0.462745, 0.462745, 0.462745, 1 )
-margin_left = 278.0
-margin_right = 378.0
+margin_left = 338.0
+margin_right = 438.0
 margin_bottom = 720.0
 size_flags_vertical = 7
 

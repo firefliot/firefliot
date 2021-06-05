@@ -1,11 +1,13 @@
 tool
 extends Node
 
+var alphabet : String = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z"
+
 var plugin_name : String = "Easy Charts"
 var templates : Dictionary = {}
 var chart_types : Dictionary = {
     0:"LineChart",
-    1:"BarChart",
+    1:"ColumnChart",
     2:"ScatterChart",
     3:"RadarChart",
     4:"PieChart"
@@ -13,8 +15,6 @@ var chart_types : Dictionary = {
 
 func _ready():
     templates = _load_templates()
-
-#    _print_message("Templates loaded")
 
 func _print_message(message : String, type : int = 0):
     match type:
@@ -35,3 +35,6 @@ func get_template(template_index : int):
 
 func get_chart_type(chart_type : int):
     return chart_types.get(chart_types.keys()[chart_type])
+
+func get_letter_index(index : int) -> String:
+    return alphabet.split(" ")[index]

@@ -12,9 +12,14 @@ using MQTTnet.Client.Receiving;
 
 public class MQTT : Node 
 {
+    [Signal] public delegate void Connected();
+    [Signal] public delegate void Disconnected();
+    [Signal] public delegate void Subscribed(string topic);
+    [Signal] public delegate void Unsubscribed(String[] topics);
     [Signal] public delegate void MessageReceived(string topic, string payload);
-    public string clientId = "mqttx_1992726f";
-    public string mqttURI = "broker.hivemq.com";
+    [Signal] public delegate void MessagePublished(string topic, string payload);
+    public string clientId = "";
+    public string mqttURI = "vps-d2eaf76a.vps.ovh.net";
     public string mqttUser = "";
     public string mqttPassword = "";
     public int mqttPort = 1883;
@@ -30,17 +35,18 @@ public class MQTT : Node
     {
         base._Ready();
         client_topic += "_"+factory_code+"/glue/shared";
-        GD.Print(client_topic);
     }
 
     private void OnSubscriberConnected(MqttClientConnectedEventArgs x)
     {
-        GD.Print("Client Connected: ", x.AuthenticateResult.ResultCode);
+        //GD.Print("Client Connected: ", x.AuthenticateResult.ResultCode);
+        EmitSignal(nameof(Connected));
     }
 
     private void OnSubscriberDisconnected(MqttClientDisconnectedEventArgs x)
     {
-        GD.Print("Client Disconnected.");
+        //GD.Print("Client Disconnected.");
+        EmitSignal(nameof(Disconnected));
     }
     
     private void OnSubscriberMessageReceived(MqttApplicationMessageReceivedEventArgs x)
@@ -86,17 +92,17 @@ public class MQTT : Node
         .WithQualityOfServiceLevel((MQTTnet.Protocol.MqttQualityOfServiceLevel)qos)
         .WithRetainFlag(retainFlag)
         .Build());
-        GD.Print("Published message: "+payload);
+        EmitSignal(nameof(MessagePublished), topic, payload);
     }
 
     public async void SubscribeToTopic(string topic)
     {
         await mqttClient.SubscribeAsync(new MqttTopicFilterBuilder().WithTopic(topic).Build());
-        GD.Print("Subscribed to topic: " + topic);
+        EmitSignal(nameof(Subscribed), topic);
     }
     public async void UnsubscribeFromTopics(String[] topics)
     {
         await mqttClient.UnsubscribeAsync(topics);
-        GD.Print("Unsubscribed from topic: " + topics.ToString());
+        EmitSignal(nameof(Unsubscribed), topics);
     }
 }
