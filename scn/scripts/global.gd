@@ -7,10 +7,10 @@ var tg_bot : TelegramBot
 
 class SensorValues:
     const temp_treshold := 35.0
-    const hum_treshold := 45.0
+    const hum_treshold := 55.0
     const press_treshold := 1100.0
     const tvoc_treshold := 300.0
-    const co2_treshold := 600.0
+    const co2_treshold := 5000.0
     const batt_treshold := 4.0
     const labels : PoolStringArray = PoolStringArray(["Temperatura", "Umiditá", "Pressione", "eCO2", "TVOC", "Batteria"])
     const units : PoolStringArray = PoolStringArray(["°C", "%", "hPa", "PPM", "PPB", "%"])

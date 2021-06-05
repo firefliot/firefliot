@@ -41,7 +41,7 @@ func _ready() -> void:
         default_size = OS.get_window_size()
         $MainContainer/TopBar.set_window_name("firefliot Desktop")
         load_docks()
-    if Global.is_client():
+    if Global.is_server():
         Global.connect_telegram_bot()
     
 
