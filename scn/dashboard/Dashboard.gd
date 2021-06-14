@@ -5,14 +5,42 @@ signal update_battery(topic, sensor, value)
 export (PackedScene) var line_chart : PackedScene
 
 onready var charts_container : VBoxContainer = $Charts/ChartsContainer
+onready var cards_container : VBoxContainer = $Charts/SensorCardsContainer
 
 var dataframe_list : Array = []
 var charts : Array = []
 
+export (PackedScene) var Card : PackedScene
+
+var cards : Array = []
+var sensors : Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    pass # Replace with function body.
+    if OS.get_name() == "Android":
+        charts_container.hide()
+        cards_container.show()
+    else:
+        charts_container.show()
+        cards_container.hide()
+    
+func build_card(datetime : Dictionary, topic : String, payload : String) -> void:
+    var data_row : Array = payload.split(",")
+    var sensor : String = data_row.pop_front()
+    var card : PanelContainer = check_card(sensor)
+    card.set_values(data_row)
+    emit_signal("update_battery",topic, sensor, float(data_row.back()))
+
+func check_card(sensor : String) -> PanelContainer:
+    if sensors.has(sensor):
+        return cards[sensors.find(sensor)]
+    else:
+        sensors.append(sensor)
+        var card : PanelContainer = Card.instance()
+        cards_container.add_child(card)
+        card.set_sensor_name(sensor)
+        cards.append(card)
+        return card
 
 func build_dataframe(datetime : Dictionary, topic : String, payload : String) -> void:
     var data_row : Array = payload.split(",")

@@ -65,7 +65,10 @@ func _on_message_received(topic : String, payload : String) -> void:
             
         "value":
             if Global.is_client():
-                dashboard.build_dataframe(time, topic, payload)
+                if OS.get_name() == "Android":
+                    dashboard.build_card(time, topic, payload)
+                else:
+                    dashboard.build_dataframe(time, topic, payload)
             else:
                 dashboard.check_treshold(payload)
             LOGGER.log_csv_data(time, topic, payload.split(","), l_topic)

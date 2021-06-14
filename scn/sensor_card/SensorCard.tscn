@@ -1,0 +1,299 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://res/img/values/barometer.svg" type="Texture" id=1]
+[ext_resource path="res://res/img/values/flask.svg" type="Texture" id=2]
+[ext_resource path="res://res/img/values/thermometer.svg" type="Texture" id=3]
+[ext_resource path="res://res/img/values/carbon-dioxide.svg" type="Texture" id=4]
+[ext_resource path="res://res/img/values/battery.svg" type="Texture" id=5]
+[ext_resource path="res://res/img/values/humidity.svg" type="Texture" id=6]
+[ext_resource path="res://res/fonts/Roboto-Medium.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://res/fonts/Roboto-Light.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://scn/sensor_card/SensorCard.gd" type="Script" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="DynamicFont" id=2]
+size = 25
+outline_size = 1
+outline_color = Color( 0.631373, 0.388235, 0.137255, 1 )
+extra_spacing_char = 2
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+font_data = ExtResource( 8 )
+
+[node name="SensorCard" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Card" type="VBoxContainer" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Card"]
+margin_right = 1280.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 2 )
+text = "SENSOR"
+align = 1
+
+[node name="Container" type="HBoxContainer" parent="Card"]
+margin_top = 35.0
+margin_right = 1280.0
+margin_bottom = 281.0
+custom_constants/separation = 25
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Column1" type="VBoxContainer" parent="Card/Container"]
+margin_left = 407.0
+margin_right = 633.0
+margin_bottom = 246.0
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Temperature" type="HBoxContainer" parent="Card/Container/Column1"]
+margin_right = 226.0
+margin_bottom = 72.0
+
+[node name="TextureRect" type="TextureRect" parent="Card/Container/Column1/Temperature"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+size_flags_vertical = 0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="Container" type="VBoxContainer" parent="Card/Container/Column1/Temperature"]
+margin_left = 54.0
+margin_right = 191.0
+margin_bottom = 72.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="Card/Container/Column1/Temperature/Container"]
+margin_right = 137.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 3 )
+text = "20°"
+valign = 1
+
+[node name="Label2" type="Label" parent="Card/Container/Column1/Temperature/Container"]
+margin_top = 48.0
+margin_right = 137.0
+margin_bottom = 72.0
+custom_fonts/font = SubResource( 4 )
+text = "TEMPERATURE"
+
+[node name="Humidity" type="HBoxContainer" parent="Card/Container/Column1"]
+margin_top = 87.0
+margin_right = 226.0
+margin_bottom = 159.0
+
+[node name="TextureRect" type="TextureRect" parent="Card/Container/Column1/Humidity"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+size_flags_vertical = 0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="Container" type="VBoxContainer" parent="Card/Container/Column1/Humidity"]
+margin_left = 54.0
+margin_right = 152.0
+margin_bottom = 72.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="Card/Container/Column1/Humidity/Container"]
+margin_right = 98.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 3 )
+text = "100%"
+valign = 1
+
+[node name="Label2" type="Label" parent="Card/Container/Column1/Humidity/Container"]
+margin_top = 48.0
+margin_right = 98.0
+margin_bottom = 72.0
+custom_fonts/font = SubResource( 4 )
+text = "HUMIDITY"
+
+[node name="Pressure" type="HBoxContainer" parent="Card/Container/Column1"]
+margin_top = 174.0
+margin_right = 226.0
+margin_bottom = 246.0
+
+[node name="TextureRect" type="TextureRect" parent="Card/Container/Column1/Pressure"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+size_flags_vertical = 0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+
+[node name="Container" type="VBoxContainer" parent="Card/Container/Column1/Pressure"]
+margin_left = 54.0
+margin_right = 226.0
+margin_bottom = 72.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="Card/Container/Column1/Pressure/Container"]
+margin_right = 172.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 3 )
+text = "1000 hPa"
+valign = 1
+
+[node name="Label2" type="Label" parent="Card/Container/Column1/Pressure/Container"]
+margin_top = 48.0
+margin_right = 172.0
+margin_bottom = 72.0
+custom_fonts/font = SubResource( 4 )
+text = "PRESSURE"
+
+[node name="Column2" type="VBoxContainer" parent="Card/Container"]
+margin_left = 658.0
+margin_right = 872.0
+margin_bottom = 246.0
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ECO2" type="HBoxContainer" parent="Card/Container/Column2"]
+margin_right = 214.0
+margin_bottom = 72.0
+
+[node name="TextureRect" type="TextureRect" parent="Card/Container/Column2/ECO2"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+size_flags_vertical = 0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="Container" type="VBoxContainer" parent="Card/Container/Column2/ECO2"]
+margin_left = 54.0
+margin_right = 214.0
+margin_bottom = 72.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="Card/Container/Column2/ECO2/Container"]
+margin_right = 160.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 3 )
+text = "400 ppm"
+valign = 1
+
+[node name="Label2" type="Label" parent="Card/Container/Column2/ECO2/Container"]
+margin_top = 48.0
+margin_right = 160.0
+margin_bottom = 72.0
+custom_fonts/font = SubResource( 4 )
+text = "eCO2"
+
+[node name="TVOC" type="HBoxContainer" parent="Card/Container/Column2"]
+margin_top = 87.0
+margin_right = 214.0
+margin_bottom = 159.0
+
+[node name="TextureRect" type="TextureRect" parent="Card/Container/Column2/TVOC"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+size_flags_vertical = 0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="Container" type="VBoxContainer" parent="Card/Container/Column2/TVOC"]
+margin_left = 54.0
+margin_right = 202.0
+margin_bottom = 72.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="Card/Container/Column2/TVOC/Container"]
+margin_right = 148.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 3 )
+text = "100 ppb"
+valign = 1
+
+[node name="Label2" type="Label" parent="Card/Container/Column2/TVOC/Container"]
+margin_top = 48.0
+margin_right = 148.0
+margin_bottom = 72.0
+custom_fonts/font = SubResource( 4 )
+text = "TVOC"
+
+[node name="Battery" type="HBoxContainer" parent="Card/Container/Column2"]
+margin_top = 174.0
+margin_right = 214.0
+margin_bottom = 246.0
+
+[node name="TextureRect" type="TextureRect" parent="Card/Container/Column2/Battery"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+size_flags_vertical = 0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="Container" type="VBoxContainer" parent="Card/Container/Column2/Battery"]
+margin_left = 54.0
+margin_right = 146.0
+margin_bottom = 72.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="Card/Container/Column2/Battery/Container"]
+margin_right = 92.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 3 )
+text = "3.7 V"
+valign = 1
+
+[node name="Label2" type="Label" parent="Card/Container/Column2/Battery/Container"]
+margin_top = 48.0
+margin_right = 92.0
+margin_bottom = 72.0
+custom_fonts/font = SubResource( 4 )
+text = "BATTERY"

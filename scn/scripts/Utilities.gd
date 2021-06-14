@@ -1,6 +1,6 @@
 extends Node
 
-const SENSOR_HEADERS : PoolStringArray = PoolStringArray(["temp", "press", "hum", "eco2", "tvoc", "batt"])
+const SENSOR_HEADERS : PoolStringArray = PoolStringArray(["temp", "hum", "press", "eco2", "tvoc", "batt"])
 
 func format_time_int(time_int : int) -> String:
     return (("0" if str(time_int).length() == 1 else "") + str(time_int))
@@ -50,7 +50,7 @@ func build_tg_treshold_message(anomalies : PoolIntArray, values : Array) -> Stri
     var msg : String = "&#9888; <b>ATTENZIONE</b> &#9888;\n"
     msg+="<i>Rilevati valori anomali</i>\n\n"
     msg+="&#128100; Sensore: <code>%s</code> \n" % values.pop_front()
-    for i in range(0, anomalies.size()-1):
+    for i in range(0, anomalies.size()):
         match anomalies[i]:
             0:
                 pass
