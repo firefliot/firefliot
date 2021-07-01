@@ -302,9 +302,8 @@ func slice_data() -> Array:
     data_to_display.resize(data.size())
     if only_disp_values == Vector2(0,0) :
         data_to_display = data.duplicate(true)
-    elif only_disp_values.x == 0 and only_disp_values.y < data[0].size():
-        for row_idx in data.size():
-            data_to_display[row_idx] = [data[row_idx][0]] + data[row_idx].slice(data[row_idx].size()-only_disp_values.y, data[row_idx].size()-1)
+    elif only_disp_values.x == 0 and only_disp_values.y < data.size():
+        data_to_display = [data[0]] + data.slice(data.size()-only_disp_values.y, data.size()-1)
     elif only_disp_values.y == 0 and only_disp_values.x < data[0].size():
         for row_idx in data.size():
             data_to_display[row_idx] = [data[row_idx][0]] + data[row_idx].slice(1, only_disp_values.x)

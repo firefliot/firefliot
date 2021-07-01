@@ -1,5 +1,4 @@
 extends Control
-class_name Main
 
 onready var side_bar : SideBar = $MainContainer/DockContainer/SideBar
 onready var docks_container : VBoxContainer = $MainContainer/DockContainer/Docks
@@ -65,10 +64,10 @@ func _on_message_received(topic : String, payload : String) -> void:
             
         "value":
             if Global.is_client():
-                if OS.get_name() == "Android":
-                    dashboard.build_card(time, topic, payload)
-                else:
-                    dashboard.build_dataframe(time, topic, payload)
+#                if OS.get_name() == "Android":
+                dashboard.build_card(time, topic, payload)
+#                else:
+                dashboard.build_dataframe(time, topic, payload)
             else:
                 dashboard.check_treshold(payload)
             LOGGER.log_csv_data(time, topic, payload.split(","), l_topic)
@@ -121,3 +120,7 @@ func _on_subscribed(topic : String) -> void:
 
 func _on_unsubscribed(topics : PoolStringArray) -> void:
     LOGGER.print_msg("unsubscribed from %s" % topics.join(","))
+
+
+func _on_Button_pressed():
+    OS.shell_open("file://"+OS.get_user_data_dir())

@@ -11,7 +11,7 @@ onready var ECO2 = Column2.get_node("ECO2/Container/Value")
 onready var TVOC = Column2.get_node("TVOC/Container/Value")
 onready var Battery = Column2.get_node("Battery/Container/Value")
 
-
+onready var labels : Array = [Temperature, Humidity, Pressure, ECO2, TVOC, Battery]
 # Called when the node enters the scene tree for the first time.
 func _ready():
     SensorName.set_text("")
@@ -25,10 +25,13 @@ func _ready():
 func set_sensor_name(name : String):
     SensorName.set_text(name)
 
-func set_values(values : Array):
-    Temperature.set_text(str(values[0])+Global.SensorValues.units[0])
-    Humidity.set_text(str(values[1])+Global.SensorValues.units[1])
-    Pressure.set_text(str(values[2])+" "+Global.SensorValues.units[2])
-    ECO2.set_text(str(values[3])+" "+Global.SensorValues.units[3])
-    TVOC.set_text(str(values[4])+" "+Global.SensorValues.units[4])
-    Battery.set_text(str(values[5])+" "+Global.SensorValues.units[5])
+func set_values(values : Array, anomalies : Array):
+    for id in range(0, anomalies.size()):
+        match anomalies[id]:
+            0: labels[id].modulate = Color.white
+            1: labels[id].modulate = Color.yellow
+            2: labels[id].modulate = Color.red
+    if values.back() <= Global.SensorValues.batt_treshold:
+        Battery.modulate = Color.yellow
+    for val in range(0, values.size()):
+        labels[val].set_text(str(values[val])+ " "+ Global.SensorValues.units[val])

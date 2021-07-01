@@ -28,8 +28,14 @@ func set_status(status_code : int):
             value = "Online"
             color = status_colors.online
         -1:
+            value = "Pause"
+            color = Color.aquamarine
+        -2:
             value = "Sleeping"
             color = status_colors.offline
+        -3:
+            value = "Disconnected"
+            color = status_colors.disconnected
         _:
             value = "Disconnected"
             color = status_colors.disconnected

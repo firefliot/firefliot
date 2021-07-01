@@ -126,6 +126,15 @@ custom_constants/separation = 25
 alignment = 1
 script = ExtResource( 8 )
 
+[node name="CheckButton" type="CheckButton" parent="MainContainer/DockContainer/Docks/Dashboard/Charts"]
+margin_left = 517.0
+margin_top = 32.0
+margin_right = 637.0
+margin_bottom = 72.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Charts"
+
 [node name="Database" type="PanelContainer" parent="MainContainer/DockContainer/Docks"]
 visible = false
 margin_top = 173.0
@@ -188,6 +197,7 @@ margin_right = 1154.0
 margin_bottom = 197.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+scroll_following = true
 
 [node name="Settings" type="PanelContainer" parent="MainContainer/DockContainer/Docks"]
 visible = false
@@ -213,8 +223,15 @@ margin_bottom = 24.0
 custom_styles/normal = SubResource( 6 )
 text = "Dock"
 
+[node name="Button" type="Button" parent="MainContainer/DockContainer/Docks/Settings/DockContainer"]
+margin_right = 12.0
+margin_bottom = 20.0
+text = "Open log folder"
+
 [connection signal="close" from="MainContainer/TopBar" to="." method="_on_TopBar_close"]
 [connection signal="minimize" from="MainContainer/TopBar" to="." method="_on_TopBar_minimize"]
 [connection signal="moving_from_pos" from="MainContainer/TopBar" to="." method="_on_TopBar_moving_from_pos"]
 [connection signal="resize" from="MainContainer/TopBar" to="." method="_on_TopBar_resize"]
 [connection signal="button_pressed" from="MainContainer/DockContainer/SideBar" to="." method="_on_SideBar_button_pressed"]
+[connection signal="toggled" from="MainContainer/DockContainer/Docks/Dashboard/Charts/CheckButton" to="MainContainer/DockContainer/Docks/Dashboard" method="_on_CheckButton_toggled"]
+[connection signal="pressed" from="MainContainer/DockContainer/Docks/Settings/DockContainer/Button" to="." method="_on_Button_pressed"]

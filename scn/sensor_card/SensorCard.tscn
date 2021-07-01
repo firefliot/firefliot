@@ -13,18 +13,17 @@
 [sub_resource type="StyleBoxEmpty" id=1]
 
 [sub_resource type="DynamicFont" id=2]
-size = 25
+size = 20
 outline_size = 1
 outline_color = Color( 0.631373, 0.388235, 0.137255, 1 )
 extra_spacing_char = 2
 font_data = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 40
+size = 30
 font_data = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=4]
-size = 20
 font_data = ExtResource( 8 )
 
 [node name="SensorCard" type="PanelContainer"]
@@ -37,23 +36,23 @@ __meta__ = {
 }
 
 [node name="Card" type="VBoxContainer" parent="."]
-margin_right = 1280.0
-margin_bottom = 720.0
+margin_right = 1100.0
+margin_bottom = 600.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Card"]
-margin_right = 1280.0
-margin_bottom = 31.0
+margin_right = 1100.0
+margin_bottom = 24.0
 custom_fonts/font = SubResource( 2 )
 text = "SENSOR"
 align = 1
 
 [node name="Container" type="HBoxContainer" parent="Card"]
-margin_top = 35.0
-margin_right = 1280.0
-margin_bottom = 281.0
+margin_top = 28.0
+margin_right = 1100.0
+margin_bottom = 223.0
 custom_constants/separation = 25
 alignment = 1
 __meta__ = {
@@ -61,17 +60,17 @@ __meta__ = {
 }
 
 [node name="Column1" type="VBoxContainer" parent="Card/Container"]
-margin_left = 407.0
-margin_right = 633.0
-margin_bottom = 246.0
+margin_left = 361.0
+margin_right = 542.0
+margin_bottom = 195.0
 custom_constants/separation = 15
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Temperature" type="HBoxContainer" parent="Card/Container/Column1"]
-margin_right = 226.0
-margin_bottom = 72.0
+margin_right = 181.0
+margin_bottom = 55.0
 
 [node name="TextureRect" type="TextureRect" parent="Card/Container/Column1/Temperature"]
 margin_right = 50.0
@@ -84,31 +83,31 @@ stretch_mode = 6
 
 [node name="Container" type="VBoxContainer" parent="Card/Container/Column1/Temperature"]
 margin_left = 54.0
-margin_right = 191.0
-margin_bottom = 72.0
+margin_right = 166.0
+margin_bottom = 55.0
 custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Value" type="Label" parent="Card/Container/Column1/Temperature/Container"]
-margin_right = 137.0
-margin_bottom = 48.0
+margin_right = 112.0
+margin_bottom = 36.0
 custom_fonts/font = SubResource( 3 )
 text = "20°"
 valign = 1
 
 [node name="Label2" type="Label" parent="Card/Container/Column1/Temperature/Container"]
-margin_top = 48.0
-margin_right = 137.0
-margin_bottom = 72.0
+margin_top = 36.0
+margin_right = 112.0
+margin_bottom = 55.0
 custom_fonts/font = SubResource( 4 )
 text = "TEMPERATURE"
 
 [node name="Humidity" type="HBoxContainer" parent="Card/Container/Column1"]
-margin_top = 87.0
-margin_right = 226.0
-margin_bottom = 159.0
+margin_top = 70.0
+margin_right = 181.0
+margin_bottom = 125.0
 
 [node name="TextureRect" type="TextureRect" parent="Card/Container/Column1/Humidity"]
 margin_right = 50.0
@@ -121,31 +120,31 @@ stretch_mode = 6
 
 [node name="Container" type="VBoxContainer" parent="Card/Container/Column1/Humidity"]
 margin_left = 54.0
-margin_right = 152.0
-margin_bottom = 72.0
+margin_right = 129.0
+margin_bottom = 55.0
 custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Value" type="Label" parent="Card/Container/Column1/Humidity/Container"]
-margin_right = 98.0
-margin_bottom = 48.0
+margin_right = 75.0
+margin_bottom = 36.0
 custom_fonts/font = SubResource( 3 )
 text = "100%"
 valign = 1
 
 [node name="Label2" type="Label" parent="Card/Container/Column1/Humidity/Container"]
-margin_top = 48.0
-margin_right = 98.0
-margin_bottom = 72.0
+margin_top = 36.0
+margin_right = 75.0
+margin_bottom = 55.0
 custom_fonts/font = SubResource( 4 )
 text = "HUMIDITY"
 
 [node name="Pressure" type="HBoxContainer" parent="Card/Container/Column1"]
-margin_top = 174.0
-margin_right = 226.0
-margin_bottom = 246.0
+margin_top = 140.0
+margin_right = 181.0
+margin_bottom = 195.0
 
 [node name="TextureRect" type="TextureRect" parent="Card/Container/Column1/Pressure"]
 margin_right = 50.0
@@ -158,39 +157,39 @@ stretch_mode = 6
 
 [node name="Container" type="VBoxContainer" parent="Card/Container/Column1/Pressure"]
 margin_left = 54.0
-margin_right = 226.0
-margin_bottom = 72.0
+margin_right = 181.0
+margin_bottom = 55.0
 custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Value" type="Label" parent="Card/Container/Column1/Pressure/Container"]
-margin_right = 172.0
-margin_bottom = 48.0
+margin_right = 127.0
+margin_bottom = 36.0
 custom_fonts/font = SubResource( 3 )
 text = "1000 hPa"
 valign = 1
 
 [node name="Label2" type="Label" parent="Card/Container/Column1/Pressure/Container"]
-margin_top = 48.0
-margin_right = 172.0
-margin_bottom = 72.0
+margin_top = 36.0
+margin_right = 127.0
+margin_bottom = 55.0
 custom_fonts/font = SubResource( 4 )
 text = "PRESSURE"
 
 [node name="Column2" type="VBoxContainer" parent="Card/Container"]
-margin_left = 658.0
-margin_right = 872.0
-margin_bottom = 246.0
+margin_left = 567.0
+margin_right = 739.0
+margin_bottom = 195.0
 custom_constants/separation = 15
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ECO2" type="HBoxContainer" parent="Card/Container/Column2"]
-margin_right = 214.0
-margin_bottom = 72.0
+margin_right = 172.0
+margin_bottom = 55.0
 
 [node name="TextureRect" type="TextureRect" parent="Card/Container/Column2/ECO2"]
 margin_right = 50.0
@@ -203,31 +202,31 @@ stretch_mode = 6
 
 [node name="Container" type="VBoxContainer" parent="Card/Container/Column2/ECO2"]
 margin_left = 54.0
-margin_right = 214.0
-margin_bottom = 72.0
+margin_right = 172.0
+margin_bottom = 55.0
 custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Value" type="Label" parent="Card/Container/Column2/ECO2/Container"]
-margin_right = 160.0
-margin_bottom = 48.0
+margin_right = 118.0
+margin_bottom = 36.0
 custom_fonts/font = SubResource( 3 )
 text = "400 ppm"
 valign = 1
 
 [node name="Label2" type="Label" parent="Card/Container/Column2/ECO2/Container"]
-margin_top = 48.0
-margin_right = 160.0
-margin_bottom = 72.0
+margin_top = 36.0
+margin_right = 118.0
+margin_bottom = 55.0
 custom_fonts/font = SubResource( 4 )
 text = "eCO2"
 
 [node name="TVOC" type="HBoxContainer" parent="Card/Container/Column2"]
-margin_top = 87.0
-margin_right = 214.0
-margin_bottom = 159.0
+margin_top = 70.0
+margin_right = 172.0
+margin_bottom = 125.0
 
 [node name="TextureRect" type="TextureRect" parent="Card/Container/Column2/TVOC"]
 margin_right = 50.0
@@ -240,31 +239,31 @@ stretch_mode = 6
 
 [node name="Container" type="VBoxContainer" parent="Card/Container/Column2/TVOC"]
 margin_left = 54.0
-margin_right = 202.0
-margin_bottom = 72.0
+margin_right = 163.0
+margin_bottom = 55.0
 custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Value" type="Label" parent="Card/Container/Column2/TVOC/Container"]
-margin_right = 148.0
-margin_bottom = 48.0
+margin_right = 109.0
+margin_bottom = 36.0
 custom_fonts/font = SubResource( 3 )
 text = "100 ppb"
 valign = 1
 
 [node name="Label2" type="Label" parent="Card/Container/Column2/TVOC/Container"]
-margin_top = 48.0
-margin_right = 148.0
-margin_bottom = 72.0
+margin_top = 36.0
+margin_right = 109.0
+margin_bottom = 55.0
 custom_fonts/font = SubResource( 4 )
 text = "TVOC"
 
 [node name="Battery" type="HBoxContainer" parent="Card/Container/Column2"]
-margin_top = 174.0
-margin_right = 214.0
-margin_bottom = 246.0
+margin_top = 140.0
+margin_right = 172.0
+margin_bottom = 195.0
 
 [node name="TextureRect" type="TextureRect" parent="Card/Container/Column2/Battery"]
 margin_right = 50.0
@@ -277,23 +276,23 @@ stretch_mode = 6
 
 [node name="Container" type="VBoxContainer" parent="Card/Container/Column2/Battery"]
 margin_left = 54.0
-margin_right = 146.0
-margin_bottom = 72.0
+margin_right = 123.0
+margin_bottom = 55.0
 custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Value" type="Label" parent="Card/Container/Column2/Battery/Container"]
-margin_right = 92.0
-margin_bottom = 48.0
+margin_right = 69.0
+margin_bottom = 36.0
 custom_fonts/font = SubResource( 3 )
 text = "3.7 V"
 valign = 1
 
 [node name="Label2" type="Label" parent="Card/Container/Column2/Battery/Container"]
-margin_top = 48.0
-margin_right = 92.0
-margin_bottom = 72.0
+margin_top = 36.0
+margin_right = 69.0
+margin_bottom = 55.0
 custom_fonts/font = SubResource( 4 )
 text = "BATTERY"
